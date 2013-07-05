@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orm-mapping>
+
+    <entity name="ovni" class="flowcode\demo\domain\Ovni" table="ovni" >
+        <property name="Id" column="id"/>
+        <property name="Name" column="name"/>
+        <relation entity="weapon" name="Weapons" table="ovni_weapon" localColumn="id_ovni" foreignColumn="id_weapon" cardinality="many-to-many" />
+    </entity>
+
+    <entity name="weapon" class="flowcode\demo\domain\Weapon" table="weapon" >
+        <property name="Id" column="id"/>
+        <property name="Name" column="name"/>
+    </entity>
+                
+    <entity name="poll" class="flowcode\demo\domain\Poll" table="poll" >
+        <property name="Id" column="id"/>
+        <property name="Question" column="question"/>
+        <relation entity="poll_option" name="Options" table="poll_option" localColumn="id" foreignColumn="id_poll" cardinality="one-to-many" />
+    </entity>
+                
+    <entity name="poll_option" class="flowcode\demo\domain\PollOption" table="poll_option" >
+        <property name="Id" column="id"/>
+        <property name="Name" column="name"/>
+        <property name="IdPoll" column="id_poll"/>
+    </entity>
+
+</orm-mapping>
